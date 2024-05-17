@@ -1,0 +1,4 @@
+﻿  proyecto #2.cpp
+C:\Users\walte\Desktop\Nuevo C++\proyecto #2\proyecto #2\proyecto #2.cpp(65,12): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
+C:\Users\walte\Desktop\Nuevo C++\proyecto #2\proyecto #2\proyecto #2.cpp(439,12): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
+  proyecto #2.vcxproj -> C:\Users\walte\Desktop\Nuevo C++\proyecto #2\x64\Debug\proyecto #2.exe
