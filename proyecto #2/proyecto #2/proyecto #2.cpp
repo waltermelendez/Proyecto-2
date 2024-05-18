@@ -560,15 +560,15 @@ void TRES_CUATRO(int jugador, int puntos_aganar) {
 		bool juego3 = Jugador3.ver_domino();
 		string con = " ";
 		int convert_1 = 0, convert_3 = 0, convertir2 = 0;
-		con = Jugador1.buscar_doble().substr(2,2);
+		con = Jugador1.buscar_doble().substr(2, 2);
 		convert_1 = stoi(Jugador1.buscar_doble()) + stoi(con);
 		con = Jugador2.buscar_doble().substr(2, 2);
 		convertir2 = stoi(Jugador2.buscar_doble()) + stoi(con);
 		con = Jugador3.buscar_doble().substr(2, 2);
-		if ((juego1 && juego2 && juego3) == true) 
+		if ((juego1 && juego2 && juego3) == true)
 		{
-			
-		
+
+
 			int ficha = 0;
 			if (convert_1 > convertir2 && convert_1 > convert_3)
 			{
@@ -579,12 +579,12 @@ void TRES_CUATRO(int jugador, int puntos_aganar) {
 
 				mesa->Push(Jugador1.remover_en(ficha));
 				verficar1 = 1;
-				if (convertir2>convert_3)
+				if (convertir2 > convert_3)
 				{
 					verficar3 = 1;
 				}
-				
-				
+
+
 			}
 			else if (convertir2 > convert_3 && convertir2 > convert_3) {
 				cout << "Empieza J2, diga su ficha\n";
@@ -592,7 +592,7 @@ void TRES_CUATRO(int jugador, int puntos_aganar) {
 				cout << "Su ficha es: " << Jugador2.buscar_en(ficha) << endl;
 				mesa->Push(Jugador1.remover_en(ficha));
 				verficar2 = 1;
-				if (convert_1>convert_3)
+				if (convert_1 > convert_3)
 				{
 					verficar3 = 1;
 				}
@@ -613,7 +613,7 @@ void TRES_CUATRO(int jugador, int puntos_aganar) {
 
 				//El resultado es si el jugador 2 tiene la ficha doble de mayor valor.
 				verficar3 = 1;
-				if (convert_1<convertir2)
+				if (convert_1 < convertir2)
 				{
 					convert_1 = 1;
 				}
@@ -628,7 +628,7 @@ void TRES_CUATRO(int jugador, int puntos_aganar) {
 			con = Jugador2.buscar_doble().substr(2, 2);
 			convertir2 = stoi(Jugador2.buscar_doble()) + stoi(con);
 			con = Jugador3.buscar_doble().substr(2, 2);
-			if (convert_1 > convertir2 && convert_1 >convert_3)
+			if (convert_1 > convertir2 && convert_1 > convert_3)
 			{
 				cout << "Empizar J1, diga su ficha\n";
 
@@ -637,7 +637,7 @@ void TRES_CUATRO(int jugador, int puntos_aganar) {
 
 				mesa->Push(Jugador1.remover_en(ficha));
 				verficar1 = 1;
-				if (convert_3>convertir2)
+				if (convert_3 > convertir2)
 				{
 					verficar2 = 1;
 				}
@@ -648,11 +648,11 @@ void TRES_CUATRO(int jugador, int puntos_aganar) {
 				cout << "Su ficha es: " << Jugador2.buscar_en(ficha) << endl;
 				mesa->Push(Jugador1.remover_en(ficha));
 				verficar2 = 1;
-				if (convert_1>convert_3)
+				if (convert_1 > convert_3)
 				{
 					verficar3 = 1;
 				}
-				
+
 			}
 			else
 			{
@@ -665,7 +665,7 @@ void TRES_CUATRO(int jugador, int puntos_aganar) {
 
 				//El resultado es si el jugador 2 tiene la ficha doble de mayor valor.
 				verficar3 = 1;
-				if (convertir2>convert_1)
+				if (convertir2 > convert_1)
 				{
 					verficar1 = 1;
 				}
@@ -774,7 +774,7 @@ void TRES_CUATRO(int jugador, int puntos_aganar) {
 				mesa->Push(Jugador1.remover_en(ficha));
 				verficar1 = 1;
 				//El resultado es si el jugador 1 tiene la ficha doble de mayor valor.
-				if (convertir2<convert_3)
+				if (convertir2 < convert_3)
 				{
 					verficar2 = 1;
 				}
@@ -786,7 +786,7 @@ void TRES_CUATRO(int jugador, int puntos_aganar) {
 				cout << "Su ficha es: " << Jugador2.buscar_en(ficha) << endl;
 				mesa->Push(Jugador1.remover_en(ficha));
 				verficar2 = 1;
-				if (convert_1<convert_3)
+				if (convert_1 < convert_3)
 				{
 					verficar1 = 1;
 				}
@@ -802,7 +802,7 @@ void TRES_CUATRO(int jugador, int puntos_aganar) {
 
 				//El resultado es si el jugador 2 tiene la ficha doble de mayor valor.
 				verficar3 = 1;
-				if (convertir2>convert_1)
+				if (convertir2 > convert_1)
 				{
 					verficar1 = 1;
 				}
@@ -812,7 +812,7 @@ void TRES_CUATRO(int jugador, int puntos_aganar) {
 		int escojer = 0;
 		do
 		{
-		
+
 			while (!verficar1)
 			{
 
@@ -963,36 +963,96 @@ void TRES_CUATRO(int jugador, int puntos_aganar) {
 					}
 					else
 					{
-						if (pozo->Peek() == "X")
+						string respuesta = " ";
+						cout << "Desea recoger el domino y usarla para continuar\n";
+						cin >> respuesta;
+						if ("si" || "Si")
 						{
-							cout << "el juego ha terminado, no hay mas fichas en el pozo\n";
-							empezar = 1;
+
+							respuesta = pozo->buscar(pozo, mesa->Peek());//*******************
+							Jugador1.add(respuesta);
+							int nuevo = Jugador1.contar();
+							Jugador1.remover_en(nuevo);
+							verficar1 = 1;
+							cout << "---------------------------------\n";
+							mesa->impirmir_M();
 						}
 						else
 						{
-							string respuesta = " ";
-							cout << "Desea recoger el domino y usarla para continuar\n";
-							cin >> respuesta;
-							if ("si" || "Si")
-							{
-
-								respuesta = pozo->buscar(pozo, mesa->Peek());//*******************
-								Jugador2.add(respuesta);
-								int nuevo = Jugador2.contar();
-								Jugador2.remover_en(nuevo);
-								verficar2 = 1;
-								cout << "---------------------------------\n";
-								mesa->impirmir_M();
-							}
-							else
-							{
-								cout << "Usted a decidido a perder el turno\n";
-								pozo->imprimir();
-								verficar2 = 1;
-							}
+							cout << "Usted a decidido a perder el turno\n";
+							pozo->imprimir();
+							verficar1 = 1;
 						}
 					}
 
+				}
+			}
+			while (!verificar3)
+			{
+				string respuesta3 = "";
+				while (respuesta3 == "si" || respuesta3 == "Si")
+				{
+					jugador3.imprimir();
+					cout << "Diga la posicion de la ficha jugaodr 3\n";
+					cin >> escojer;
+					if (escojer == 0)
+					{
+						break;
+					}
+					else
+					{
+						cout << "Su domino es: " << Jugador3.buscar_en(escojer) << endl;
+						cout << "Desa cambiar su ficha\n";
+						cin >> Respuesta3;
+						cout << "--------------------------\n";
+					}
+				}
+				if (mesa->Peek()[0] == Jugador3.buscar_en(escojer)[0] || mesa->Peek()[2] == Jugador3.buscar_en(escojer)[2] || mesa->Peek()[2] == Jugador3.buscar_en(escojer)[0] || mesa->Peek()[0] == Jugador3.buscar_en(escojer)[2])
+				{
+					mesa->Push(Jugador3.remover_en(escojer));
+					verficar3 = 1;
+					cout << "++++++++++++++++++++++++++++++++++\n";
+					mesa->impirmir_M();
+				}
+				else if ((mesa->Peek()[0] != Jugador3.buscar_en(escojer)[0] || mesa->Peek()[2] != Jugador3.buscar_en(escojer)[2] || mesa->Peek()[2] != Jugador3.buscar_en(escojer)[0] || mesa->Peek()[0] != Jugador3.buscar_en(escojer)[2]) && (escojer != 0))
+				{
+					cout << "ficha incorrecta\n";
+					cout << "Se ha buscado una ficha automaticamente\n";
+					string Domino = Jugador3.buscar_igual(mesa->Peek());
+					mesa->Push(Domino);
+					cout << "+++++++++++++++++++++++++++++++++++++++++\n";
+					mesa->impirmir_M();
+					verficar3 = 1;
+				}
+				else if (escojer == 0)
+				{
+					if (pozo->Peek() == "X") {
+						cout << "El juego se ha terminado\n";
+						empezar = 1;
+					}
+					else
+					{
+						string respuesta = " ";
+						cout << "Desea recoger el domino y usarla para continuar\n";
+						cin >> respuesta;
+						if ("si" || "Si")
+						{
+
+							respuesta = pozo->buscar(pozo, mesa->Peek());//*******************
+							Jugador3.add(respuesta);
+							int nuevo = Jugador3.contar();
+							Jugador3.remover_en(nuevo);
+							verficar3 = 1;
+							cout << "---------------------------------\n";
+							mesa->impirmir_M();
+						}
+						else
+						{
+							cout << "Usted a decidido a perder el turno\n";
+							pozo->imprimir();
+							verficar3 = 1;
+						}
+					}
 				}
 			}
 			//Mostrar la cantidad de puntos de cada jugador.
@@ -1009,7 +1069,7 @@ void TRES_CUATRO(int jugador, int puntos_aganar) {
 		} while (!empezar);
 
 	}
-	
+
 	//Ver quien gano el juego.
 	if (jugador == 4)
 	{
@@ -1100,7 +1160,7 @@ int main()
 			}
 
 		}break;
-		case 3: 
+		case 3:
 		{//Caso para tres jugadores
 			cout << "La cantidad de puntos para ganar\n";
 			cin >> puntos_aganar;
@@ -1114,7 +1174,7 @@ int main()
 			}
 
 		}break;
-		case 4: 
+		case 4:
 		{//Caso para cuatro jugadores
 			cout << "La cantidad de puntos para ganar\n";
 			cin >> puntos_aganar;
@@ -1129,7 +1189,7 @@ int main()
 
 
 		};
-			  break;
+		break;
 		default: {
 
 			cout << "Cantidad de jugadores invalidad\n";
